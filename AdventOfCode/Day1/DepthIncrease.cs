@@ -4,7 +4,6 @@ namespace AdventOfCode.Day1
 {
     public static class DepthIncrease
     {
-
         public static int Solution(IList<int> input)
         {
             if (input.Count <= 1)
@@ -24,21 +23,20 @@ namespace AdventOfCode.Day1
 
         public static int SolutionSlidingWindow(IList<int> input)
         {
-
             // Remove from start
             // Add to end
-            
+
             // Two vars: current and next.
 
             int solution = 0;
             int currentSum = 0;
-            
+
 
             // sliding window gedoe
             int left = 0;
             int right = 0;
 
-            while(right < input.Count)
+            while (right < input.Count)
             {
                 if (right < 3)
                 {
@@ -54,11 +52,9 @@ namespace AdventOfCode.Day1
                     solution += 1;
 
                 currentSum = nextSum;
-
             }
-            
+
             return solution;
         }
-        
     }
 }

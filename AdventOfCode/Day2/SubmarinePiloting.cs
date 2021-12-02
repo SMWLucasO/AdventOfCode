@@ -7,7 +7,6 @@ namespace AdventOfCode.Day2
 {
     public static class SubmarinePiloting
     {
-        
         public static int SolutionPartOne(string[] input)
         {
             var parsedInput = PreparePartData(input, PreparePart1Data);
@@ -17,15 +16,16 @@ namespace AdventOfCode.Day2
         public static int SolutionPartTwo(string[] input)
         {
             var parsedInput = PreparePartData(input, PreparePart2Data);
-            
+
             return parsedInput.GetValueOrDefault("forward", 0)
-                   * (parsedInput.GetValueOrDefault("down", 0) 
+                   * (parsedInput.GetValueOrDefault("down", 0)
                       - parsedInput.GetValueOrDefault("up", 0)
-                      );
+                   );
         }
-        
-        
-        private static Dictionary<string, int> PreparePartData(string[] input, Action<Dictionary<string, int>, string, string> preparator)
+
+
+        private static Dictionary<string, int> PreparePartData(string[] input,
+            Action<Dictionary<string, int>, string, string> preparator)
         {
             var dict = new Dictionary<string, int>();
 
@@ -40,11 +40,9 @@ namespace AdventOfCode.Day2
 
         private static void PreparePart1Data(Dictionary<string, int> dict, string key, string value)
             => dict.SetOrAdd(key, int.Parse(value));
-        
+
         private static void PreparePart2Data(Dictionary<string, int> dict, string key, string value)
         {
-            
-            
             switch (key)
             {
                 case "forward":
@@ -59,6 +57,5 @@ namespace AdventOfCode.Day2
                     break;
             }
         }
-
     }
 }
