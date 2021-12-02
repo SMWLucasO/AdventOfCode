@@ -3,6 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>AdventOfCode</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,6 +19,10 @@
       <EmbeddedResource Include="Resources\Day2\input.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AdventOfCode.Common\AdventOfCode.Common.csproj" />
     </ItemGroup>
 
 </Project>
