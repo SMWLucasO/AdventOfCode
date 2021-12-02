@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using AdventOfCode.Common.Fluent.Collections;
 
-namespace AdventOfCode.Day2
+namespace AdventOfCode.Days.Day2
 {
     public static class SubmarinePiloting
     {

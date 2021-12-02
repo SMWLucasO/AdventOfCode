@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace AdventOfCode.Day1
+namespace AdventOfCode.Days.Day1
 {
     public static class DepthIncrease
     {

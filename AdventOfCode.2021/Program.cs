@@ -1,8 +1,8 @@
 ﻿using System;
 using System.IO;
 using AdventOfCode.Common.Utilities;
-using AdventOfCode.Day1;
-using AdventOfCode.Day2;
+using AdventOfCode.Days.Day1;
+using AdventOfCode.Days.Day2;
 
 namespace AdventOfCode
 {
