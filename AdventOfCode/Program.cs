@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using AdventOfCode.Common.Utilities;
 using AdventOfCode.Day1;
+using AdventOfCode.Day2;
 
 namespace AdventOfCode
 {
@@ -12,11 +14,18 @@ namespace AdventOfCode
         {
 
             // day 1
-            var input = File.ReadAllLines("Resources/Day1/input.txt")
-                .Select(str => Convert.ToInt32(str)).ToList();
+            var input = FileUtility.FileInputToNumberList("Resources/Day1/input.txt");
             
             Console.WriteLine(DepthIncrease.Solution(input));
             Console.WriteLine(DepthIncrease.SolutionSlidingWindow(input));
+
+            Console.WriteLine();
+            
+            // day 2
+            var movements = File.ReadAllLines("Resources/Day2/input.txt");
+            Console.WriteLine(SubmarinePiloting.SolutionPartOne(movements));
+            Console.WriteLine(SubmarinePiloting.SolutionPartTwo(movements));
+
 
         }
     }

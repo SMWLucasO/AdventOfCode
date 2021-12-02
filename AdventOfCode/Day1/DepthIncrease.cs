@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace AdventOfCode.Day1
 {
     public static class DepthIncrease
     {
 
-        public static int Solution(List<int> input)
+        public static int Solution(IList<int> input)
         {
             if (input.Count <= 1)
                 return 0;
@@ -23,7 +22,7 @@ namespace AdventOfCode.Day1
             return increments;
         }
 
-        public static int SolutionSlidingWindow(List<int> input)
+        public static int SolutionSlidingWindow(IList<int> input)
         {
 
             // Remove from start
