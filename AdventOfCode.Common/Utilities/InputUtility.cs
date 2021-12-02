@@ -10,35 +10,36 @@ namespace AdventOfCode.Common.Utilities
     {
         public static IList<int> FileInputToNumberList(string filePath)
             => File.ReadAllLines(filePath).Select(int.Parse).ToList();
-        
+
         public static Dictionary<K, V> ToDictionary<K, V>(string filePath, Func<string, (K, V)> spliterator)
             => ToDictionary(File.ReadAllLines(filePath), spliterator);
-        
-        public static Dictionary<K, V> ToDictionary<K, V>(IEnumerable<string> input, Func<string, (K, V)> spliterator)
-        {
-            var dictionary = new Dictionary<K,V>();
 
-            foreach (var line in input)
+        public static Dictionary<K, V> ToDictionary<K, V>(IEnumerable<string> input, Func<string, (K, V)> spliterator)
+            => PopulateDictionary<K, V>(input, (dictionary, line) =>
             {
                 var (key, value) = spliterator(line);
                 dictionary[key] = value;
-            }
+            });
 
-            return dictionary;
-        }
-        
         public static Dictionary<K, V> SummableToDictionary<K, V>(string filePath, Func<string, (K, V)> spliterator)
             => SummableToDictionary(File.ReadAllLines(filePath), spliterator);
-        
-        public static Dictionary<K, V> SummableToDictionary<K, V>(IEnumerable<string> input, Func<string, (K, V)> spliterator)
+
+        public static Dictionary<K, V> SummableToDictionary<K, V>(IEnumerable<string> input,
+            Func<string, (K, V)> spliterator)
+            => PopulateDictionary<K, V>(input, (dictionary, line) =>
+            {
+                var (key, value) = spliterator(line);
+                dictionary.SetOrAdd(key, value);
+            });
+
+
+        public static Dictionary<K, V> PopulateDictionary<K, V>(IEnumerable<string> input,
+            Action<Dictionary<K, V>, string> populator)
         {
             var dictionary = new Dictionary<K, V>();
 
             foreach (var line in input)
-            {
-                var (key, value) = spliterator(line);
-                dictionary.SetOrAdd(key, value);
-            }
+                populator(dictionary, line);
 
             return dictionary;
         }

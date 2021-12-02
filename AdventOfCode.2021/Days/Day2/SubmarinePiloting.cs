@@ -1,60 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
 using AdventOfCode.Common.Fluent.Collections;
+using AdventOfCode.Common.Utilities;
 
 namespace AdventOfCode.Days.Day2
 {
     public static class SubmarinePiloting
     {
-        public static int SolutionPartOne(string[] input)
+        public static int SolutionPartOne(IEnumerable<string> input)
         {
-            var parsedInput = PreparePartData(input, PreparePart1Data);
+            var parsedInput = InputUtility.SummableToDictionary(input, s =>
+            {
+                var split = s.Split(' ');
+                return (split[0], int.Parse(split[1]));
+            });
+
             return parsedInput["forward"] * (parsedInput["down"] - parsedInput["up"]);
         }
 
-        public static int SolutionPartTwo(string[] input)
+        public static int SolutionPartTwo(IEnumerable<string> input)
         {
-            var parsedInput = PreparePartData(input, PreparePart2Data);
+            var parsedInput = InputUtility.PopulateDictionary<string, int>(input, (dict, line) =>
+            {
+                var split = line.Split(' ');
+                var key = split[0];
+                var value = int.Parse(split[1]);
+
+                switch (key)
+                {
+                    case "forward":
+                        dict.SetOrAdd("forward", value);
+                        dict.SetOrAdd("down", value * dict.GetValueOrDefault("aim", 0));
+                        break;
+                    case "up":
+                        dict.SetOrAdd("aim", -value);
+                        break;
+                    case "down":
+                        dict.SetOrAdd("aim", value);
+                        break;
+                }
+            });
 
             return parsedInput.GetValueOrDefault("forward", 0)
                    * (parsedInput.GetValueOrDefault("down", 0)
                       - parsedInput.GetValueOrDefault("up", 0)
                    );
-        }
-
-
-        private static Dictionary<string, int> PreparePartData(string[] input,
-            Action<Dictionary<string, int>, string, string> preparator)
-        {
-            var dict = new Dictionary<string, int>();
-
-            foreach (var kv in input)
-            {
-                var output = kv.Split(' ');
-                preparator(dict, output[0], output[1]);
-            }
-
-            return dict;
-        }
-
-        private static void PreparePart1Data(Dictionary<string, int> dict, string key, string value)
-            => dict.SetOrAdd(key, int.Parse(value));
-
-        private static void PreparePart2Data(Dictionary<string, int> dict, string key, string value)
-        {
-            switch (key)
-            {
-                case "forward":
-                    dict.SetOrAdd("forward", int.Parse(value));
-                    dict.SetOrAdd("down", int.Parse(value) * dict.GetValueOrDefault("aim", 0));
-                    break;
-                case "up":
-                    dict.SetOrAdd("aim", -int.Parse(value));
-                    break;
-                case "down":
-                    dict.SetOrAdd("aim", int.Parse(value));
-                    break;
-            }
         }
     }
 }
