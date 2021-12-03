@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using AdventOfCode.Common.Fluent.Collections;
 using AdventOfCode.Common.Utilities;
 
 namespace AdventOfCode.Days.Day3
@@ -52,14 +53,16 @@ namespace AdventOfCode.Days.Day3
 
         private static int GetVerticalMostCommonBit(IEnumerable<string> input, int column)
         {
-            int zeroes = 0;
-            int ones = 0;
+            var zeroes = 0;
+            var ones = 0;
 
-            foreach (var t in input)
-                if (t[column] == '0')
+            input.ForEachVertical<string, char>(column, s =>
+            {
+                if (s == '0')
                     zeroes += 1;
                 else
                     ones += 1;
+            });
 
             return (ones >= zeroes) ? 1 : 0;
         }
@@ -69,11 +72,13 @@ namespace AdventOfCode.Days.Day3
             int zeroes = 0;
             int ones = 0;
 
-            foreach (var t in input)
-                if (t[column] == '0')
+            input.ForEachVertical<string, char>(column, s =>
+            {
+                if (s == '0')
                     zeroes += 1;
                 else
                     ones += 1;
+            });
 
             return (zeroes <= ones) ? 0 : 1;
         }
