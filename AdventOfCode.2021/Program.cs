@@ -33,6 +33,9 @@ namespace AdventOfCode
             Console.WriteLine(BinaryDiagnostic.SolutionPartTwo(diagnostics));
             
             Console.WriteLine();
+            
+            // Day 4
+            
         }
     }
 }
