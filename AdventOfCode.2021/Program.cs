@@ -30,6 +30,9 @@ namespace AdventOfCode
 
             var diagnostics = File.ReadAllLines("Resources/Day3/input.txt");
             Console.WriteLine(BinaryDiagnostic.Solution(diagnostics));
+            Console.WriteLine(BinaryDiagnostic.SolutionPartTwo(diagnostics));
+            
+            Console.WriteLine();
         }
     }
 }
