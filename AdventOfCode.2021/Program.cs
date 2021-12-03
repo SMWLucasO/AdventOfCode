@@ -3,6 +3,7 @@ using System.IO;
 using AdventOfCode.Common.Utilities;
 using AdventOfCode.Days.Day1;
 using AdventOfCode.Days.Day2;
+using AdventOfCode.Days.Day3;
 
 namespace AdventOfCode
 {
@@ -22,6 +23,13 @@ namespace AdventOfCode
             var movements = File.ReadAllLines("Resources/Day2/input.txt");
             Console.WriteLine(SubmarinePiloting.SolutionPartOne(movements));
             Console.WriteLine(SubmarinePiloting.SolutionPartTwo(movements));
+
+            Console.WriteLine();
+            
+            // Day 3
+
+            var diagnostics = File.ReadAllLines("Resources/Day3/input.txt");
+            Console.WriteLine(BinaryDiagnostic.Solution(diagnostics));
         }
     }
 }
