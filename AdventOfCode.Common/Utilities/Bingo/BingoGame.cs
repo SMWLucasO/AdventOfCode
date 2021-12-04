@@ -36,22 +36,12 @@ namespace AdventOfCode.Common.Utilities.Bingo
             
         }
 
-        public void RegisterBingoCard(string[][] nums)
+        public void RegisterBingoCard(BingoCell[][] cells)
         {
             var card = new BingoCard() {CardId = CardIdIncrement++};
-            for (int i = 0; i < nums.Length; i++)
-            {
-                if (!card.Positions.ContainsKey(i))
-                    card.Positions[i] = new List<BingoCell>();
-
-                for (int j = 0; j < nums[i].Length; j++)
-                {
-                    if (nums[i][j].Length <= 0) continue;
-
-                    card.Positions[i].Add(new BingoCell(nums[i][j]));
-                }
-            }
-
+            for (int i = 0; i < cells.Length; i++) 
+                card.Positions[i] = new List<BingoCell>(cells[i]);
+            
             BingoCards.Add(card);
         }
 

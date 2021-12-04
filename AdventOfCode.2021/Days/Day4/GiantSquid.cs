@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using AdventOfCode.Common.Utilities;
 using AdventOfCode.Common.Utilities.Bingo;
 
 namespace AdventOfCode.Days.Day4
 {
     public static class GiantSquid
     {
-
         public static int Solution(string[] input)
         {
             var game = new BingoGame();
@@ -33,22 +33,12 @@ namespace AdventOfCode.Days.Day4
         {
             // register the bingo numbers
             game.RegisterBingoNumbers(input[0].Split(','));
-
-            var cardContents = new List<string[]>();
-            for (int i = 2; i < input.Length; i++)
-            {
-                // close enough, we weten iig dat een row >10 chars heeft.
-                if (input[i].Length < 10)
-                {
-                    game.RegisterBingoCard(cardContents.ToArray());
-                    cardContents.Clear();
-                }
-                else
-                    cardContents.Add(input[i].Trim().Split(' '));
-            }
             
-            game.RegisterBingoCard(cardContents.ToArray());
+            InputUtility.FileInputToMultidimensionalArrays(input[1..],
+                s => s.Length < 10,
+                s => s.Split(' '),
+                s => new BingoCell(int.Parse(s.Trim()))
+            ).ForEach(game.RegisterBingoCard);
         }
-
     }
 }
