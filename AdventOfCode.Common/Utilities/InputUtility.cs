@@ -11,6 +11,9 @@ namespace AdventOfCode.Common.Utilities
         public static IList<int> FileInputToNumberList(string filePath)
             => File.ReadAllLines(filePath).Select(int.Parse).ToList();
 
+        public static IEnumerable<T> SplitLine<T>(string line, char separator, Func<string, T> converter)
+            => line.Split(separator).Select(converter);
+        
         public static List<T[][]> FileInputToMultidimensionalArrays<T>(IEnumerable<string> input,
             Predicate<string> multiArraysSplitCondition, Func<string, string[]> elementSpliterator,
             Func<string, T> converter)

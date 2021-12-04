@@ -45,10 +45,10 @@ namespace AdventOfCode.Common.Utilities.Bingo
             BingoCards.Add(card);
         }
 
-        public void RegisterBingoNumbers(IEnumerable<string> nums)
+        public void RegisterBingoNumbers(IEnumerable<int> nums)
         {
             foreach (var tmpNum in nums)
-                BingoNumbers.Add(int.Parse(tmpNum));
+                BingoNumbers.Add(tmpNum);
         }
 
         public void Play()

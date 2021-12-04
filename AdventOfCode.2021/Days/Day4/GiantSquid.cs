@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AdventOfCode.Common.Utilities;
+﻿using AdventOfCode.Common.Utilities;
 using AdventOfCode.Common.Utilities.Bingo;
 
 namespace AdventOfCode.Days.Day4
@@ -32,8 +30,8 @@ namespace AdventOfCode.Days.Day4
         private static void RegisterBingoData(string[] input, BingoGame game)
         {
             // register the bingo numbers
-            game.RegisterBingoNumbers(input[0].Split(','));
-            
+            game.RegisterBingoNumbers(InputUtility.SplitLine(input[0], ',', int.Parse));
+
             InputUtility.FileInputToMultidimensionalArrays(input[1..],
                 s => s.Length < 10,
                 s => s.Split(' '),
