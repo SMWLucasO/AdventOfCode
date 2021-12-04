@@ -15,7 +15,18 @@ namespace AdventOfCode.Days.Day4
 
             game.Play();
 
-            return game.WinningCard.GetUnmarkedNumbersSum() * game.WinningCard.WinningNumber;
+            return game.WinningCards[0].GetUnmarkedNumbersSum() * game.WinningCards[0].WinningNumber;
+        }
+
+        public static int SolutionPartTwo(string[] input)
+        {
+            var game = new BingoGame();
+
+            RegisterBingoData(input, game);
+
+            game.Play();
+
+            return game.WinningCards[99].GetUnmarkedNumbersSum() * game.WinningCards[99].WinningNumber;
         }
 
         private static void RegisterBingoData(string[] input, BingoGame game)
@@ -39,18 +50,5 @@ namespace AdventOfCode.Days.Day4
             game.RegisterBingoCard(cardContents.ToArray());
         }
 
-        public static int SolutionPartTwo(string[] input)
-        {
-            // works on test input, but not on true input
-            
-            var game = new BingoGame();
-            
-            RegisterBingoData(input, game);
-
-            BingoCard card = game.PlayToLose();
-
-            return card.WinningNumber * card.GetUnmarkedNumbersSum();
-        }
-        
     }
 }

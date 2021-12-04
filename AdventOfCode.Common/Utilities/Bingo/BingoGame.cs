@@ -12,22 +12,28 @@ namespace AdventOfCode.Common.Utilities.Bingo
         public IList<BingoCard> BingoCards { get; set; }
             = new List<BingoCard>();
 
-        public BingoCard WinningCard { get; set; }
+        public List<BingoCard> WinningCards { get; set; }
+            = new List<BingoCard>();
 
         public int CardIdIncrement { get; set; } = 0;
 
         public void MarkNumber(int num)
         {
+            List<BingoCard> cardsToRemove = new();
             foreach (var bingoCard in BingoCards)
             {
                 var (row, col) = bingoCard.MarkPosition(num);
+                if (row == -1 && col == -1) continue;
 
-                if (row == -1 || col == -1) continue;
-
-                if (!bingoCard.IsWinningPosition(row, col)) continue;
-
-                WinningCard = bingoCard;
+                cardsToRemove.Add(bingoCard);
             }
+
+            foreach (var toRemove in cardsToRemove)
+            {
+                BingoCards.Remove(toRemove);
+                WinningCards.Add(toRemove);
+            }
+            
         }
 
         public void RegisterBingoCard(string[][] nums)
@@ -57,32 +63,8 @@ namespace AdventOfCode.Common.Utilities.Bingo
 
         public void Play()
         {
-            foreach (var num in BingoNumbers)
-            {
-                if (WinningCard != null)
-                    break;
-
+            foreach (var num in BingoNumbers) 
                 MarkNumber(num);
-            }
-        }
-
-        public BingoCard PlayToLose()
-        {
-            BingoCard recentWin = null;
-            foreach (var num in BingoNumbers)
-            {
-                if (WinningCard != null)
-                {
-                    recentWin = WinningCard;
-
-                    BingoCards.Remove(WinningCard);
-                    WinningCard = null;
-                }
-
-                MarkNumber(num);
-            }
-
-            return recentWin;
         }
     }
 }

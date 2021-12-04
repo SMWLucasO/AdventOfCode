@@ -65,11 +65,12 @@ namespace AdventOfCode.Common.Utilities.Bingo
                     if (!Positions[i][j].Number.Equals(num)) continue;
                     
                     Positions[i][j].Marked = true;
+
+                    if (!IsWinningPosition(i, j)) continue;
                     
-                    if (IsWinningPosition(i, j))
-                        WinningNumber = Positions[i][j].Number;
-                    
+                    WinningNumber = Positions[i][j].Number;
                     return (i, j);
+
                 }
             }
 
