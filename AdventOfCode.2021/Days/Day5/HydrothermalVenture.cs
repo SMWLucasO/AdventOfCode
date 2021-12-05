@@ -4,7 +4,7 @@ using System.Linq;
 using AdventOfCode.Common.Fluent.Collections;
 using AdventOfCode.Common.Utilities.Geometries;
 
-namespace AdventOfCode.Days
+namespace AdventOfCode.Days.Day5
 {
     public static class HydrothermalVenture
     {
