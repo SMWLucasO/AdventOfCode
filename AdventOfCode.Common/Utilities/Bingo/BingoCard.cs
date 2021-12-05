@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using AdventOfCode.Common.Fluent.Collections;
+﻿using System.Collections.Generic;
 
 namespace AdventOfCode.Common.Utilities.Bingo
 {
@@ -20,10 +17,16 @@ namespace AdventOfCode.Common.Utilities.Bingo
         /// </summary>
         public Dictionary<int, List<BingoCell>> Positions { get; set; } = new();
         
+        /// <summary>
+        /// The number which caused the bingocard to have a bingo.
+        /// -1 implies 'not yet existing'
+        /// </summary>
         public int WinningNumber { get; set; } = -1;
 
-        public int CardId { get; set; } = 0;
-        
+        /// <summary>
+        /// Sum the numbers on the cells that have not been marked yet.
+        /// </summary>
+        /// <returns>The summed unmarked bingo cells.</returns>
         public int GetUnmarkedNumbersSum()
         {
             int count = 0;
@@ -39,6 +42,12 @@ namespace AdventOfCode.Common.Utilities.Bingo
             return count;
         }
         
+        /// <summary>
+        /// Check if the given position (row, column) has a 'bingo' either horizontally or vertically.
+        /// </summary>
+        /// <param name="row">The cell's row</param>
+        /// <param name="column">The cell's column</param>
+        /// <returns>Bool determining whether this cell is a winning position.</returns>
         public bool IsWinningPosition(int row, int column)
         {
             bool verticalWin = true;
@@ -56,6 +65,11 @@ namespace AdventOfCode.Common.Utilities.Bingo
             return horizontalWin || verticalWin;
         }
 
+        /// <summary>
+        /// Mark the given number if it exists on the board.
+        /// </summary>
+        /// <param name="num">The number to be marked on the board.</param>
+        /// <returns>the position of the cell if it causes a bingo, otherwise (-1, -1)</returns>
         public (int, int) MarkPosition(int num)
         {
             for (int i = 0; i < Positions.Count; i++)

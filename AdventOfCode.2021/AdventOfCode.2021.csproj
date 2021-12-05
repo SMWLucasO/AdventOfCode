@@ -7,10 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Resources" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Resources\Day1\input.txt" />
       <EmbeddedResource Include="Resources\Day1\input.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -30,6 +26,14 @@
       </EmbeddedResource>
       <None Remove="Resources\Day4\input.txt" />
       <EmbeddedResource Include="Resources\Day4\input.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Day5\input_test.txt" />
+      <EmbeddedResource Include="Resources\Day5\input_test.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </EmbeddedResource>
+      <None Remove="Resources\Day5\input.txt" />
+      <EmbeddedResource Include="Resources\Day5\input.txt">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </EmbeddedResource>
     </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using AdventOfCode.Common.Utilities;
+using AdventOfCode.Days;
 using AdventOfCode.Days.Day1;
 using AdventOfCode.Days.Day2;
 using AdventOfCode.Days.Day3;
@@ -39,6 +40,13 @@ namespace AdventOfCode
             var game = File.ReadAllLines("Resources/Day4/input.txt");
             Console.WriteLine(GiantSquid.Solution(game));
             Console.WriteLine(GiantSquid.SolutionPartTwo(game));
+
+            Console.WriteLine();
+            
+            // Day 5
+            var hydro = File.ReadAllLines("Resources/Day5/input.txt");
+            Console.WriteLine(HydrothermalVenture.Solution(hydro));
+            Console.WriteLine(HydrothermalVenture.SolutionPartTwo(hydro));
 
         }
     }

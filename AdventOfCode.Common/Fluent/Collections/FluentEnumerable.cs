@@ -23,5 +23,14 @@ namespace AdventOfCode.Common.Fluent.Collections
                 action(expectedValue);
             }
         }
+        
+        public static IEnumerable<T> Then<T>(this IEnumerable<T> collection, Action<T> operation)
+        {
+            foreach (var el in collection) 
+                operation(el);
+
+            return collection;
+        }
+        
     }
 }
