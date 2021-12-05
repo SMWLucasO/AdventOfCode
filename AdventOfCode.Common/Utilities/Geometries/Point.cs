@@ -1,4 +1,7 @@
-﻿namespace AdventOfCode.Common.Utilities.Geometries
+﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
+namespace AdventOfCode.Common.Utilities.Geometries
 {
     public class Point
     {
@@ -25,6 +28,15 @@
         /// <returns>(x, y)</returns>
         public (int, int) AsTuple()
             => (X, Y);
-
+        
+        /// <summary>
+        /// Get all the points between the two given points.
+        /// Only works for straight and diagonal lines.
+        /// </summary>
+        /// <param name="p1">The starting point</param>
+        /// <param name="p2">The ending point</param>
+        /// <returns></returns>
+        public static List<Point> Between([NotNull] Point p1, [NotNull] Point p2) 
+            => new Line(p1, p2).GetPointsInLine();
     }
 }
