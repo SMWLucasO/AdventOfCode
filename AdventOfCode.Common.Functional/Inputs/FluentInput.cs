@@ -20,22 +20,7 @@ namespace AdventOfCode.Common.Functional.Inputs
         public FluentInput<O> Map<O>(Func<I, O> operation)
             => throw new NotImplementedException();
 
-        public FluentInput<O> MapPairs<O>(Func<I, I, O> operation)
-            => throw new NotImplementedException();
-
-        public FluentInput<O> MapN<O>(int n, Func<List<I>, O> operation)
-            => throw new NotImplementedException();
-
         public FluentInput<I> Filter(Predicate<I> operation)
-            => throw new NotImplementedException();
-
-        public FluentInput<I> FilterPair(Func<I, I, bool> operation)
-            => throw new NotImplementedException();
-
-        public FluentInput<I> FilterN(Func<List<I>, bool> operation)
-            => throw new NotImplementedException();
-
-        public FluentInput<O> Flatten<O>()
             => throw new NotImplementedException();
     }
 }
