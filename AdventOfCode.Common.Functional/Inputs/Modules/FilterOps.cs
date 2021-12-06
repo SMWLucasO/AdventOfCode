@@ -37,12 +37,13 @@ namespace AdventOfCode.Common.Functional.Inputs.Modules
             return output;
         }
 
-        public static FluentInput<I> FilterN<I>(this FluentInput<I> fluent, int elementsPerTime, Func<List<I>, bool> operation,
+        public static FluentInput<I> FilterN<I>(this FluentInput<I> fluent, int elementsPerTime,
+            Func<List<I>, bool> operation,
             Predicate<List<I>> remainderOperation = null)
         {
             if (elementsPerTime < 1)
                 return fluent;
-            
+
             FluentInput<I> output = new();
             List<I> args = new();
 

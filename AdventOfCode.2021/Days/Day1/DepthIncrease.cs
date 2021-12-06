@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using AdventOfCode.Common.Functional.Inputs;
+using AdventOfCode.Common.Functional.Inputs.Modules;
 
 namespace AdventOfCode.Days.Day1
 {
@@ -10,7 +12,7 @@ namespace AdventOfCode.Days.Day1
                 return 0;
 
             int increments = 0;
-
+            
             for (int i = 0; i < input.Count - 1; i++)
             {
                 // verschil check, is het verschil positief? Dan hebben we een increase.
