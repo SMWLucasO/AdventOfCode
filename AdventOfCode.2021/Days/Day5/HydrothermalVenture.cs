@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using AdventOfCode.Common.Fluent.Collections;
+using AdventOfCode.Common.Functional.Inputs;
 using AdventOfCode.Common.Utilities.Geometries;
 
 namespace AdventOfCode.Days.Day5
@@ -19,13 +20,14 @@ namespace AdventOfCode.Days.Day5
                     (int.Parse(rightHand[0]), int.Parse(rightHand[1])));
             });
 
+
         public static int Solution(string[] input)
         {
             Dictionary<(int, int), int> points = new();
 
             GetLines(input).Where(x => x.Start.X == x.End.X || x.Start.Y == x.End.Y)
                 .SelectMany(line => line.GetStraightPointsInLine()).Then(x => points.SetOrAdd((x.X, x.Y), 1));
-            
+
             return points.Values.Count(x => x > 1);
         }
 

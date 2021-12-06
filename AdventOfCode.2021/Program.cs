@@ -6,6 +6,7 @@ using AdventOfCode.Days.Day2;
 using AdventOfCode.Days.Day3;
 using AdventOfCode.Days.Day4;
 using AdventOfCode.Days.Day5;
+using AdventOfCode.Days.Day6;
 
 namespace AdventOfCode
 {
@@ -47,6 +48,18 @@ namespace AdventOfCode
             var hydro = File.ReadAllLines("Resources/Day5/input.txt");
             Console.WriteLine(HydrothermalVenture.Solution(hydro));
             Console.WriteLine(HydrothermalVenture.SolutionPartTwo(hydro));
+
+            Console.WriteLine();
+            
+            // Day 6
+
+            var fish = File.ReadAllLines("Resources/Day6/input.txt");
+            Console.WriteLine(LanternFish.Solution(fish[0].Split(',')));
+            Console.WriteLine(LanternFish.SolutionPartTwo(fish[0].Split(',')));
+            
+            Console.WriteLine();
+            
+            // Day 7
 
         }
     }
