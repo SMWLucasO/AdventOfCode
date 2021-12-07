@@ -10,6 +10,7 @@ using AdventOfCode.Days.Day3;
 using AdventOfCode.Days.Day4;
 using AdventOfCode.Days.Day5;
 using AdventOfCode.Days.Day6;
+using AdventOfCode.Days.Day7;
 
 namespace AdventOfCode
 {
@@ -64,11 +65,16 @@ namespace AdventOfCode
 
             // Day 7
 
-            var test = FluentInput<List<int>>.From(new List<List<int>> {new() {1, 2, 3}, new() {4, 5, 6}});
-            
-            foreach (var element in test.Flatten<List<int>, int>().Elements) 
-                Console.WriteLine(element);
+            var crabs = FluentInput<string>.From(File.ReadAllLines("Resources/Day7/input.txt")[0].Split(','))
+                .Map(int.Parse).Elements;
 
+            Console.WriteLine(TreacheryWhales.Solution(crabs));
+            Console.WriteLine(TreacheryWhales.SolutionPartTwo(crabs));
+            
+            Console.WriteLine();
+            
+            // Day 8
+            
         }
     }
 }
