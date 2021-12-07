@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using AdventOfCode.Common.Functional.Inputs;
-using AdventOfCode.Common.Functional.Inputs.Modules;
 using AdventOfCode.Common.Utilities;
 using AdventOfCode.Days.Day1;
 using AdventOfCode.Days.Day2;
